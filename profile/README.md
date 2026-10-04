@@ -27,7 +27,7 @@ O jogo permite iniciar a missão sem uma conta. A consulta e a avaliação de pr
 - **Cinco atendimentos com diálogos ramificados:** clientes, objetivos e respostas diferentes, com feedback sobre as decisões.
 - **Tutorial interativo e aba Ajuda:** introdução à dinâmica, orientações e dicas de atendimento.
 - **Ficha de escuta:** reúne necessidades e informações descobertas durante a conversa.
-- **Escolha contextual de produtos:** três opções distintas do catálogo, com foto, ficha e quantidade para comparar antes de recomendar.
+- **Escolha contextual de produtos:** três opções sorteadas entre produtos que atendem aos tipos e à ocasião definidos para cada cliente, com foto, ficha e quantidade para comparar antes de recomendar. O sorteio não utiliza IA.
 - **Avaliação com IA:** adequação do produto de **0 a 1000**, com justificativas, sugestões e informações que ainda precisam ser confirmadas. A pontuação dos diálogos possui sua própria escala, de até **400 pontos**.
 - **Pausa e retomada:** progresso e histórico guardados no navegador, com controle do tempo da partida e do atendimento.
 - **Carregamento prévio das imagens:** prepara os recursos visuais em segundo plano para facilitar as transições entre telas.
@@ -76,7 +76,7 @@ flowchart TD
     Turnstile["Cloudflare Turnstile"] --> Recovery
 ```
 
-As consultas de produtos e ranking passam pela API. A seleção das três opções usa o roteiro oficial e os campos públicos do catálogo; a avaliação utiliza a Groq para analisar a escolha à luz do contexto da conversa. Os Workers de imagens e recuperação executam seus próprios serviços.
+As consultas de produtos e ranking passam pela API. A seleção das três opções usa parâmetros pré-definidos dos clientes, filtra os campos públicos do catálogo e sorteia três alimentos distintos, sem IA; a avaliação utiliza a Groq para analisar a escolha à luz do contexto da conversa. Os Workers de imagens e recuperação executam seus próprios serviços.
 
 ### Cache compartilhado
 
